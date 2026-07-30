@@ -199,6 +199,34 @@ export function ProjectCaseStudy({
                   </div>
                 </div>
 
+                {project.processCount > 0 && (
+                  <div>
+                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-mist">
+                      Process{" "}
+                      <span className="text-mist-dim">/ {project.processCount} images</span>
+                    </h4>
+                    <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
+                      {processList.map((src, i) => (
+                        <div
+                          key={src}
+                          onClick={() => setLightbox({ images: processList, index: i })}
+                          data-cursor="view"
+                          data-cursor-label="Zoom"
+                          className="group relative aspect-square cursor-pointer overflow-hidden border border-line bg-surface"
+                        >
+                          <Image
+                            src={src}
+                            alt={`${project.title} — process detail`}
+                            fill
+                            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {project.referenceCount > 0 && (
                   <div>
                     <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-mist">
@@ -221,34 +249,6 @@ export function ProjectCaseStudy({
                           <Image
                             src={src}
                             alt={`${project.title} — reference`}
-                            fill
-                            sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 33vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {project.processCount > 0 && (
-                  <div>
-                    <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-mist">
-                      Process{" "}
-                      <span className="text-mist-dim">/ {project.processCount} images</span>
-                    </h4>
-                    <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
-                      {processList.map((src, i) => (
-                        <div
-                          key={src}
-                          onClick={() => setLightbox({ images: processList, index: i })}
-                          data-cursor="view"
-                          data-cursor-label="Zoom"
-                          className="group relative aspect-square cursor-pointer overflow-hidden border border-line bg-surface"
-                        >
-                          <Image
-                            src={src}
-                            alt={`${project.title} — process detail`}
                             fill
                             sizes="(min-width: 1024px) 16vw, (min-width: 640px) 25vw, 33vw"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
