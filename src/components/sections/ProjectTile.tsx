@@ -46,10 +46,13 @@ export function ProjectTile({
   };
 
   const span = tileSpan(index);
+  // The tall/wide alternation is a 2-column desktop rhythm — on a single
+  // mobile column it just crams wide source images into a tall box. Use one
+  // consistent, contain-friendly ratio below lg, and only diverge at lg+.
   const spanClass =
     span === "large"
-      ? "lg:col-span-8 aspect-[16/10]"
-      : "lg:col-span-4 aspect-[4/5] lg:aspect-auto lg:h-full";
+      ? "lg:col-span-8 aspect-[4/3] lg:aspect-[16/10]"
+      : "lg:col-span-4 aspect-[4/3] lg:aspect-[4/5] lg:h-full";
 
   return (
     <FadeIn delay={(index % 6) * 0.06} y={40} className={`col-span-12 ${spanClass}`}>

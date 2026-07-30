@@ -7,6 +7,7 @@ import { useGrid } from "@/lib/grid-context";
 const LINKS = [
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
+  { href: "#journey", label: "Journey" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -40,7 +41,7 @@ export function Nav() {
           N.S.
         </a>
 
-        <div className="flex items-center gap-6 sm:gap-8">
+        <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
           <span className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-paper/70 lg:flex">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-emerald opacity-75" />
@@ -55,7 +56,7 @@ export function Nav() {
               data-cursor="link"
               data-cursor-label="Toggle"
               aria-pressed={gridVisible}
-              className="inline-flex min-h-11 items-center gap-2 border-r border-paper/20 pr-6 font-mono text-xs uppercase tracking-[0.2em] sm:pr-8"
+              className="hidden min-h-11 items-center gap-2 border-r border-paper/20 pr-6 font-mono text-xs uppercase tracking-[0.2em] sm:inline-flex sm:pr-8"
             >
               <span
                 className={`h-1.5 w-1.5 rounded-full border border-paper transition-colors ${
@@ -66,7 +67,7 @@ export function Nav() {
             </button>
           </Magnetic>
 
-          <ul className="flex items-center gap-6 font-mono text-xs uppercase tracking-[0.2em] sm:gap-8">
+          <ul className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] sm:gap-6 lg:gap-8">
             {LINKS.map((link) => (
               <li key={link.href}>
                 <Magnetic strength={0.5}>

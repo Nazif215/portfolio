@@ -12,7 +12,7 @@ const HeroBackground = dynamic(
   { ssr: false }
 );
 
-const ROLES = ["3D Generalist", "Environment Artist", "XR Creator"];
+const ROLES = ["3D Artist", "Environment Artist", "Exploring Photogrammetry & Immersive Experiences"];
 
 export function Hero() {
   const { isLoading } = useLoading();
@@ -20,7 +20,7 @@ export function Hero() {
   const introState = isLoading ? "hidden" : "visible";
 
   return (
-    <section className="relative flex min-h-dvh flex-col justify-end overflow-hidden bg-ink">
+    <section className="relative flex min-h-[78dvh] flex-col justify-end overflow-hidden bg-ink sm:min-h-dvh">
       <RegistrationMarks />
       <div className="absolute inset-0">
         {!isMobile && <HeroBackground />}
