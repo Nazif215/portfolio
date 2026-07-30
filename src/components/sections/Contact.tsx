@@ -19,7 +19,7 @@ export function Contact() {
       <div className="container-edge text-center">
         <FadeIn>
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-mist">
-            03 — Contact <span className="text-mist-dim">/ COL 01–12</span>
+            04 — Contact <span className="text-mist-dim">/ COL 01–12</span>
           </span>
         </FadeIn>
 

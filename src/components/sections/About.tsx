@@ -52,9 +52,11 @@ export function About() {
           <div className="lg:col-span-5">
             <FadeIn>
               <p className="font-display text-2xl italic leading-snug text-paper sm:text-3xl">
-                A creative technologist working at the seam between art and
-                engineering — building environments, tools and experiences
-                that reward curiosity.
+                I&rsquo;m a curious 3D creative who enjoys building
+                environments, exploring photogrammetry and experimenting
+                with new technologies. My work is driven by learning,
+                iteration and the belief that every project is an
+                opportunity to improve both creatively and technically.
               </p>
             </FadeIn>
           </div>
