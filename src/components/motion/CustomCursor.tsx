@@ -68,7 +68,7 @@ export function CustomCursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[90] flex items-center justify-center rounded-full border border-paper/40 mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[100] flex items-center justify-center rounded-full border border-paper/40 mix-blend-difference"
         style={{
           x: ringX,
           y: ringY,
@@ -88,7 +88,7 @@ export function CustomCursor() {
       </motion.div>
 
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[90] whitespace-nowrap mix-blend-difference"
+        className="pointer-events-none fixed left-0 top-0 z-[100] whitespace-nowrap mix-blend-difference"
         style={{
           x: tagX,
           y: tagY,
