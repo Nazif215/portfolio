@@ -203,7 +203,10 @@ export function ProjectCaseStudy({
                   <div>
                     <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-mist">
                       Process{" "}
-                      <span className="text-mist-dim">/ {project.processCount} images</span>
+                      <span className="text-mist-dim">
+                        / {project.processCount}{" "}
+                        {project.processCount === 1 ? "image" : "images"}
+                      </span>
                     </h4>
                     <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
                       {processList.map((src, i) => (
@@ -231,11 +234,14 @@ export function ProjectCaseStudy({
                   <div>
                     <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-mist">
                       Reference{" "}
-                      <span className="text-mist-dim">/ {project.referenceCount} images</span>
+                      <span className="text-mist-dim">
+                        / {project.referenceCount}{" "}
+                        {project.referenceCount === 1 ? "image" : "images"}
+                      </span>
                     </h4>
                     <p className="mt-2 max-w-2xl font-body text-sm text-mist-dim">
-                      Mood-board and inspiration material gathered during research — not the
-                      artist&rsquo;s own work.
+                      Reference material gathered during research — not the artist&rsquo;s
+                      own work.
                     </p>
                     <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
                       {referenceList.map((src, i) => (

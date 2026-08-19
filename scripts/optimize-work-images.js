@@ -88,7 +88,47 @@ const MANIFEST = {
     hero: "007.png",
     gallery: ["004.png", "001.png", "003.png", "005.png", "006.png"],
   },
+  "stone-house": {
+    dir: "photogrametry",
+    // render/replace/ holds the artist's re-graded pass of the key shots —
+    // same framings, brighter and far more readable than the originals. The
+    // hero and most of the gallery come from there.
+    hero: "render/replace/house_closeup.0004_001.png",
+    gallery: [
+      "render/sTone_House_cinematics.0003_001.jpg",
+      "render/sTone_House_cinematics.0003_002.jpg",
+      "render/replace/house_closeup.0004_002.png",
+      "process/comp_ext.png",
+      "render/replace/house_closeup.0004_005.png",
+      "render/replace/house_closeup.0004_003.png",
+      // Also the cover shot — shown in the gallery so it can be opened full
+      // size, since the case-study hero slot is taken by the video.
+      "render/replace/house_closeup.0004_001.png",
+      "render/replace/house_closeup.0004_004.png",
+    ],
+    // A professional photograph of the real building used as capture
+    // reference — not the artist's own render.
+    forceReference: ["1.APM-June-CF002804-scaled-1-2048x1538.jpg"],
+    exclude: [
+      // Night frames that are ~95% black — legible in motion, unreadable
+      // as stills in a grid.
+      "Window.0003.jpg",
+      "Window.0003_001.jpg",
+      "Window.0003_002.jpg",
+      // Near-duplicate of house_closeup.0004.jpg — dropped by the artist.
+      "house_closeup.0003.jpg",
+      // Darker originals superseded by their render/replace/ re-grades.
+      "sTone_House_cinematics.0003.jpg",
+      "house_inside.0003_001.jpg",
+      "house_inside.0003.jpg",
+      "house_closeup.0004_001.jpg",
+    ],
+  },
 };
+
+// Optional CLI filter: `node scripts/optimize-work-images.js stone-house`
+// re-processes just that project instead of all of them.
+const ONLY = process.argv.slice(2);
 
 function walkImages(dir) {
   const out = [];
@@ -113,7 +153,11 @@ async function convert(srcPath, outPath, { width, quality }) {
 }
 
 async function run() {
-  for (const [slug, { dir, hero, gallery, forceProcess = [] }] of Object.entries(MANIFEST)) {
+  for (const [
+    slug,
+    { dir, hero, gallery, forceProcess = [], forceReference = [], exclude = [] },
+  ] of Object.entries(MANIFEST)) {
+    if (ONLY.length && !ONLY.includes(slug)) continue;
     const outDir = path.join(OUT_BASE, slug);
     fs.mkdirSync(outDir, { recursive: true });
     console.log(`\n=== ${slug} ===`);
@@ -135,21 +179,30 @@ async function run() {
     }
 
     const used = new Set([heroAbs, ...galleryAbs]);
+    const excludeNames = new Set(exclude.map((f) => f.toLowerCase()));
     const all = walkImages(projectRoot);
-    const remaining = all.filter((f) => !used.has(f));
+    const remaining = all.filter(
+      (f) => !used.has(f) && !excludeNames.has(path.basename(f).toLowerCase())
+    );
 
     // Files under a folder literally named "reference" are mood-board /
     // inspiration material; everything else remaining is the artist's own
     // process work (mocap, wip screenshots, extra book pages, etc). Some
     // files get saved into "reference" that are actually the artist's own
-    // WIP — forceProcess overrides the folder-based default for those.
+    // WIP — forceProcess overrides the folder-based default for those, and
+    // forceReference does the reverse for third-party material filed
+    // alongside the artist's own process shots.
     const forceProcessNames = new Set(forceProcess.map((f) => f.toLowerCase()));
-    const isReference = (f) =>
-      !forceProcessNames.has(path.basename(f).toLowerCase()) &&
-      path
+    const forceReferenceNames = new Set(forceReference.map((f) => f.toLowerCase()));
+    const isReference = (f) => {
+      const base = path.basename(f).toLowerCase();
+      if (forceReferenceNames.has(base)) return true;
+      if (forceProcessNames.has(base)) return false;
+      return path
         .relative(projectRoot, f)
         .split(path.sep)
         .some((segment) => segment.toLowerCase() === "reference");
+    };
 
     const reference = remaining.filter(isReference);
     const process = remaining.filter((f) => !isReference(f));

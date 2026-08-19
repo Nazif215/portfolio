@@ -18,10 +18,13 @@ export function ProjectTile({
   project,
   index,
   onOpen,
+  fullWidth = false,
 }: {
   project: Project;
   index: number;
   onOpen: (slug: string) => void;
+  /** Span the whole 12-column grid instead of the alternating large/small rhythm. */
+  fullWidth?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
@@ -49,8 +52,9 @@ export function ProjectTile({
   // The tall/wide alternation is a 2-column desktop rhythm — on a single
   // mobile column it just crams wide source images into a tall box. Use one
   // consistent, contain-friendly ratio below lg, and only diverge at lg+.
-  const spanClass =
-    span === "large"
+  const spanClass = fullWidth
+    ? "aspect-[4/3] lg:aspect-[21/9]"
+    : span === "large"
       ? "lg:col-span-8 aspect-[4/3] lg:aspect-[16/10]"
       : "lg:col-span-4 aspect-[4/3] lg:aspect-[4/5] lg:h-full";
 
