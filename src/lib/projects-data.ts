@@ -1,4 +1,8 @@
-export type Category = "Character Art" | "Environment" | "Typography";
+export type Category =
+  | "Character Art"
+  | "Environment"
+  | "Typography"
+  | "Photogrammetry";
 
 export type Project = {
   slug: string;
@@ -28,7 +32,7 @@ export const PROJECTS: Project[] = [
     slug: "occultus",
     title: "Occultus",
     category: "Character Art",
-    tools: ["ZBrush", "Marmoset Toolbag", "Blender", "Substance Painter", "Photoshop"],
+    tools: ["ZBrush", "Marmoset Toolbag", "Blender", "Substance Painter", "Photoshop", "Premiere Pro"],
     image: "/work/occultus/hero.webp",
     heroFit: "cover",
     gallery: [
@@ -41,13 +45,13 @@ export const PROJECTS: Project[] = [
     ],
     referenceCount: 65,
     processCount: 51,
-    video: null,
+    video: "C8Qs3qz5snc",
     role: "Character Artist",
     stat: { value: "26-page", label: "concept book, full pipeline breakdown" },
     challenge:
       "Design and build an original heavy-armor creature character from the ground up — antlered skull helm, layered plate and bone armor, hand-designed weapons — believable as a single cohesive being rather than a pile of separate props.",
     process:
-      "Blocked out proportions and silhouette early, then sculpted the full character in ZBrush, working from base forms up through musculature, armor plating and surface detail. Weapons and props were designed as their own concept pass before being sculpted and fitted to the character. Final textures were built in Substance Painter, with lookdev and turntables rendered in Marmoset Toolbag and final hero shots composited in Blender's Cycles renderer.",
+      "Blocked out proportions and silhouette early, then sculpted the full character in ZBrush, working from base forms up through musculature, armor plating and surface detail. Weapons and props were designed as their own concept pass before being sculpted and fitted to the character. Final textures were built in Substance Painter, with lookdev and turntables rendered in Blender and final hero shots composited in Blender's Cycles renderer.",
     outcome:
       "A complete character concept book — sculpt breakdowns, wireframes, prop turnarounds and final cinematic renders — presented as a self-published portfolio piece under the working title OCCVLTVZ.",
     lessons:
@@ -57,7 +61,7 @@ export const PROJECTS: Project[] = [
     slug: "typography-vengeance",
     title: "Vengeance",
     category: "Typography",
-    tools: ["Blender", "Photoshop"],
+    tools: ["Blender", "Unreal Engine", "Substance Painter", "Photoshop", "Premiere Pro"],
     image: "/work/typography-vengeance/hero.webp",
     heroFit: "contain",
     gallery: [
@@ -69,7 +73,7 @@ export const PROJECTS: Project[] = [
     ],
     referenceCount: 0,
     processCount: 20,
-    video: null,
+    video: "3FFBSXnd2Wk",
     role: "3D Typography & Environment Artist",
     stat: { value: "9 letters", label: "each built as its own fully rendered 3D scene" },
     challenge:
@@ -85,7 +89,7 @@ export const PROJECTS: Project[] = [
     slug: "kerala-heritage",
     title: "Kerala Art & Craft",
     category: "Environment",
-    tools: ["Blender", "Photoshop"],
+    tools: ["Blender", "Unreal Engine", "SpeedTree", "Photoshop", "Premiere Pro"],
     image: "/work/kerala-heritage/hero.webp",
     heroFit: "contain",
     gallery: [
@@ -97,7 +101,7 @@ export const PROJECTS: Project[] = [
     ],
     referenceCount: 13,
     processCount: 13,
-    video: null,
+    video: "YmOZQVB0n0Q",
     role: "Environment Artist",
     stat: { value: "6 panoramic shots", label: "ultra-wide renders for a government heritage exhibit" },
     challenge:
@@ -113,7 +117,7 @@ export const PROJECTS: Project[] = [
     slug: "tintin-bg-study",
     title: "Recreated Shot — Adventure of Tintin",
     category: "Environment",
-    tools: ["Autodesk Maya", "Photoshop"],
+    tools: ["Autodesk Maya", "Blender", "ZBrush", "Substance Painter", "Photoshop", "Premiere Pro"],
     image: "/work/tintin-bg-study/hero.webp",
     heroFit: "contain",
     gallery: [
@@ -124,7 +128,7 @@ export const PROJECTS: Project[] = [
     ],
     referenceCount: 0,
     processCount: 19,
-    video: null,
+    video: "LEuf_tCcHys",
     role: "Personal study — Environment Artist",
     stat: { value: "1:1", label: "shot-for-shot recreation, matched to the original film still" },
     challenge:
@@ -140,7 +144,7 @@ export const PROJECTS: Project[] = [
     slug: "hulk-bust",
     title: "Hulk",
     category: "Character Art",
-    tools: ["ZBrush"],
+    tools: ["ZBrush", "Blender", "Rokoko Motion Capture", "Premiere Pro"],
     image: "/work/hulk-bust/hero.webp",
     heroFit: "contain",
     gallery: [
@@ -167,7 +171,7 @@ export const PROJECTS: Project[] = [
     slug: "mike-the-sculptor",
     title: "Mike the Sculptor",
     category: "Character Art",
-    tools: ["ZBrush", "Procreate", "Traditional clay"],
+    tools: ["ZBrush", "Procreate", "Traditional clay", "Blender", "Photoshop", "Premiere Pro"],
     image: "/work/mike-the-sculptor/hero.webp",
     heroFit: "contain",
     gallery: [
@@ -190,6 +194,55 @@ export const PROJECTS: Project[] = [
       "A complete stylized character — concept turnaround plus a finished hand-sculpted and painted clay maquette.",
     lessons:
       "Taking a character all the way to a physical clay maquette surfaces proportion and silhouette problems that are easy to miss on screen, where you can rotate around an idealized digital camera instead of a real object in your hands.",
+  },
+];
+
+/**
+ * Reality-capture work. Kept in its own list (and its own page section) rather
+ * than mixed into PROJECTS — it's a distinct, current specialism rather than
+ * another entry in the art/environment grid.
+ */
+export const PHOTOGRAMMETRY_PROJECTS: Project[] = [
+  {
+    slug: "stone-house",
+    title: "Stone House",
+    category: "Photogrammetry",
+    tools: [
+      "Trimble RealWorks",
+      "RealityScan",
+      "Unreal Engine 5",
+      "Blender",
+      "DJI Drone",
+      "Premiere Pro",
+    ],
+    image: "/work/stone-house/hero.webp",
+    heroFit: "cover",
+    gallery: [
+      "/work/stone-house/gallery-01.webp",
+      "/work/stone-house/gallery-02.webp",
+      "/work/stone-house/gallery-03.webp",
+      "/work/stone-house/gallery-04.webp",
+      "/work/stone-house/gallery-05.webp",
+      "/work/stone-house/gallery-06.webp",
+      "/work/stone-house/gallery-07.webp",
+      "/work/stone-house/gallery-08.webp",
+    ],
+    referenceCount: 1,
+    processCount: 14,
+    video: "Tn1GLvg_Hwk",
+    role: "Reality Capture & Environment Artist",
+    stat: {
+      value: "487M points",
+      label: "5 laser-scan stations fused with 716 drone & DSLR frames",
+    },
+    challenge:
+      "Capture a real dry-stone building in woodland outside Edinburgh — inside and out — accurately enough to rebuild it as a real-time cinematic environment. Dense tree canopy limits clean drone coverage, the interior is close to pitch black, and dry stone gives photogrammetry very little in the way of flat planes or repeating features to lock onto.",
+    process:
+      "Surveyed the building with a Trimble terrestrial laser scanner across five stations — inside the structure as well as around it — and registered them into a single point cloud in Trimble RealWorks, the primary scan running at high-precision density. Drone and DSLR passes added the roof coverage and colour detail the scanner couldn't reach, and both datasets were fused into one geo-referenced alignment in RealityScan, resolving to a mean reprojection error of around 1.5 pixels. The result was reconstructed at 2mm resolution — roughly 133 million triangles carrying 8K texture sets — then inspected and cleaned in Blender before being assembled in Unreal Engine 5, where procedural landscape, PCG foliage scattering and an auto-material setup rebuilt the surrounding woodland. Four virtual Super-35 cameras on 35mm at f/2.8 were shot through Sequencer, then cut and graded in Premiere Pro with original sound design.",
+    outcome:
+      "A cinematic short in which the building is not modelled but measured — the actual scanned structure, interior included, placed back into a procedurally dressed forest and shot as a real-time sequence.",
+    lessons:
+      "The useful lesson was not picking a method but combining them. Laser scanning gave metric accuracy and worked in an interior far too dark to photograph; photogrammetry supplied the colour and surface detail the scanner alone couldn't. Neither would have carried the shot on its own, and the dark interior in particular had to be artificially lit just to be captured at all.",
   },
 ];
 
