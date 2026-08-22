@@ -1,6 +1,6 @@
 "use client";
 
-import { EnvelopeSimple, LinkedinLogo, type Icon } from "@phosphor-icons/react";
+import { EnvelopeSimple, LinkedinLogo, FileText, type Icon } from "@phosphor-icons/react";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { SOCIAL_LINKS } from "@/lib/social-links";
@@ -10,6 +10,7 @@ import { StudioClock } from "@/components/layout/StudioClock";
 const ICONS: Record<string, Icon> = {
   EnvelopeSimple,
   LinkedinLogo,
+  FileText,
 };
 
 export function Contact() {
