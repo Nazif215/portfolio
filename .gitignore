@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CV working folders — source exports and .docx drafts, which still contain the
+# phone number. `node scripts/build-cv.js` reads from here and writes the
+# redacted public copy to public/cv.html + public/cv-assets/, which ARE tracked.
+/ATS-friendly CV creation/
+/HTML_CV/
